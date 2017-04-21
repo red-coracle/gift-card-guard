@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import java.math.BigDecimal;
 
 public class DBHelper extends SQLiteOpenHelper
 {
@@ -138,5 +139,23 @@ public class DBHelper extends SQLiteOpenHelper
 
         return numItems;
     }
+
+    public double getGiftCardTotal() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor data = db.rawQuery("SELECT value FROM " + GiftCardDbIds.TABLE, null);
+
+        double total = 0.0;
+        try {
+            while (data.moveToNext()) {
+                double value = data.getDouble(0);
+                total += value;
+            }
+        } finally {
+            data.close();
+       }
+
+        return total;
+    }
+
 }
 

@@ -22,4 +22,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/list"
         android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/totalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/list"
+        android:layout_centerHorizontal="true"
+        android:textSize="20.0sp"
+        android:padding="5dp"
+        android:visibility="gone"/>
+
 </RelativeLayout>

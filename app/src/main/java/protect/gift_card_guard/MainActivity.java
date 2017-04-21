@@ -50,17 +50,21 @@ public class MainActivity extends AppCompatActivity
     {
         final ListView cardList = (ListView) findViewById(R.id.list);
         final TextView helpText = (TextView) findViewById(R.id.helpText);
+        final TextView totalText = (TextView) findViewById(R.id.totalText);
         final DBHelper db = new DBHelper(this);
 
         if(db.getGiftCardCount() > 0)
         {
             cardList.setVisibility(View.VISIBLE);
             helpText.setVisibility(View.GONE);
+            totalText.setVisibility(View.VISIBLE);
+            totalText.setText("Total: " + String.format("%.02f", db.getGiftCardTotal()));
         }
         else
         {
             cardList.setVisibility(View.GONE);
             helpText.setVisibility(View.VISIBLE);
+            totalText.setVisibility(View.GONE);
         }
 
         Cursor cardCursor = db.getGiftCardCursor();
